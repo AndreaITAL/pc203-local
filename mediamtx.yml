@@ -1,0 +1,11 @@
+rtspAddress: :8600
+rtmp: no
+hls: no
+webrtc: no
+srt: no
+api: no
+metrics: no
+pprof: no
+playback: no
+paths:
+  pc203:

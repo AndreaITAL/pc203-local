@@ -1,0 +1,12 @@
+[Unit]
+Description=mediamtx RTSP (pc203)
+After=network-online.target
+
+[Service]
+User=REPLACE_USER
+ExecStart=/opt/pc203/mediamtx /opt/pc203/mediamtx.yml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

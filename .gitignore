@@ -1,0 +1,8 @@
+lib_so/*.so
+*.log
+*.bin
+*.pcap
+*.h264
+*.png
+*.mp4
+__pycache__/

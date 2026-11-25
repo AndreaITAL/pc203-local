@@ -1,0 +1,19 @@
+[Unit]
+Description=PC203 local receiver -> RTSP
+After=mediamtx-pc203.service
+Requires=mediamtx-pc203.service
+
+[Service]
+User=REPLACE_USER
+WorkingDirectory=/opt/pc203
+# --- imposta la TUA identita' camera + keystring (vedi README / pc203_keygen.py) ---
+Environment=PC203_TOKEN=REPLACE_TOKEN_HEX
+Environment=PC203_DEVICEID=REPLACE_DEVICEID
+Environment=PC203_SESS2=REPLACE_SESS2_HEX
+Environment=PC203_KEYSTRING=REPLACE_36CHAR_KEYSTRING
+ExecStart=/bin/bash -c 'python3 /opt/pc203/pc203_receiver.py --host CAMERA_IP 2>/dev/null | ffmpeg -nostdin -fflags +genpts -r 15 -f h264 -i - -c copy -rtsp_transport tcp -f rtsp rtsp://127.0.0.1:8600/pc203'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
